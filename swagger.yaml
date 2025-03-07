@@ -41,8 +41,8 @@ components:
         city:
           type: string
         temprature:
-          type: float
+          type: number
+          format: float
         humidity:
-          type: float
-        wind_speed:
-          type: float
+          type: number
+          format: float
