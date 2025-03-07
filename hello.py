@@ -2,13 +2,15 @@ from flask import Flask
 
 app = Flask(__name__)
 
-@app.route("/hello_world")
+@app.route("/hello_world",methods=["POST"])
 def hello_world():
-    return  "<p>this is the welcome(hello) page!</p>"
+    return  {
+        "message": "Hello, World!"
+    }
 
-@app.route("/index")
-def index():
-    return  "<p>this is the index page!</p>"
+@app.route("/index/<page_number>")
+def index(page_number):
+    return  f"<p>this is the index of th page number {page_number}!</p>"
 
 @app.route("/info")
 def info():
