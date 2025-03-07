@@ -1,0 +1,48 @@
+openapi: "3.0.0"
+info:
+  title: "Weatherapp API"
+  description: "Aplication Programming Interface for managing weather data."
+  version: "1.0"
+
+paths:
+  /weather:
+    get:
+      operationId: api.weather.get_weather
+      summary: "get weather information of all cities in the system."
+      responses:
+        200:
+          description: "List of information of all cities' weather."
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Person"
+    post:
+      operationId: api.people.add_weather
+      summary: "Add weather information of a new city."
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Person"
+      responses:
+        201:
+          description: "weather info added successfuly"
+
+components:
+  schemas:
+    Weather:
+      type: object
+      properties:
+        id:
+          type: integer
+        city:
+          type: string
+        temprature:
+          type: float
+        humidity:
+          type: float
+        wind_speed:
+          type: float
