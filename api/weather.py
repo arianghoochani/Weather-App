@@ -1,7 +1,7 @@
 from flask import jsonify, request
 from models import db, Weather
 
-def get_people():
+def get_weather():
     """Retrieve all people from the database"""
     weather = Weather.query.all()
     return jsonify([{"id": w.id, "tempreture": w.tempreture, "humidity": w.humidity} for w in weather])
