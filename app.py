@@ -15,4 +15,6 @@ db = SQLAlchemy(flask_app)
 ma = Marshmallow(flask_app)
 
 if __name__ == "__main__":
+    with app.app_context():  # ✅ Ensure it runs inside Flask app context
+        db.create_all()
     flask_app.run(debug=True)
