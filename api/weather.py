@@ -2,15 +2,23 @@ from flask import jsonify, request
 from models import db, Weather
 
 def get_weather():
-    """Retrieve all people from the database"""
+    """Retrieve weather data from the database."""
     weather = Weather.query.all()
-    return jsonify([{"id": w.id, "tempreture": w.tempreture, "humidity": w.humidity} for w in weather])
-
+    return jsonify([{
+        "id": w.id,
+        "city": w.city,  # ✅ Fix: Include city in response
+        "temperature": w.temperature,  # ✅ Fix typo
+        "humidity": w.humidity
+    } for w in weather])
 
 def add_weather():
-    """Add a new person to the database"""
+    """Add a new weather entry to the database."""
     data = request.get_json()
-    new_weather = Weather(city=data["city"], tempreture=data["tempreture"],humidity=data["humidity"],)
-    db.session.add(new_person)
+    new_weather = Weather(
+        city=data["city"],
+        temperature=data["temperature"],  # ✅ Fix typo
+        humidity=data["humidity"]
+    )
+    db.session.add(new_weather)  # ✅ Fix: Use the correct variable name
     db.session.commit()
-    return jsonify({"message": "weather added successfully!"}), 201
+    return jsonify({"message": "Weather added successfully!"}), 201
