@@ -1,0 +1,21 @@
+# swagger.yml
+
+openapi: 3.0.0
+info:
+  title: "Weather information Service"
+  description: "An Api for controlling weather information through CRUD services."
+  version: "1.0.0"
+
+servers:
+  - url: "/api"
+
+paths:
+  /weather:
+    get:
+      operationId: "weather.get_all"
+      tags:
+        - "Weather"
+      summary: "retrieve all weathers information"
+      responses:
+        "200":
+          description: "Successfully read weather list"
