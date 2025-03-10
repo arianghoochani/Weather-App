@@ -1,7 +1,8 @@
-import React from "react";
+import React , { useState } from "react";
 import { AppNavBar } from "baseui/app-nav-bar";
 
 export default function Navbar() {
+  const [activeItem, setActiveItem] = useState("Home");
   const mainItems = [
     { label: "Home" },
     { label: "Search Weather Info" },
@@ -12,9 +13,10 @@ export default function Navbar() {
 
   return (
     <AppNavBar
+
       title="Weather Information"
       mainItems={mainItems}
-      onMainItemSelect={(item) => alert(`Navigating to: ${item.label}`)}
+      onMainItemSelect={(item) => setActiveItem(item.label)}
     />
   );
 }
