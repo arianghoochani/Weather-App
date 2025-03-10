@@ -1,13 +1,13 @@
 import React from "react";
 import "./App.css";
-import NavBar from "./components/NavBar";  // Import Navbar component
+import NavBar from "./components/NavBar";  // Ensure this path is correct
 
 function App() {
   return (
     <div>
-      {/* Navbar at the top */}
+      {/* Simple test to check if the app renders */}
+      <h1>Hello, Weather App!</h1>
       <NavBar />
-      <h1>Welcome to the Weather Information Service</h1>
     </div>
   );
 }
