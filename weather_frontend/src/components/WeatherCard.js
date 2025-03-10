@@ -1,13 +1,6 @@
 import React from "react";
-import { Card, StyledBody } from "baseui/card";
-import { styled } from "baseui";
-
-const WeatherContainer = styled("div", {
-  display: "grid",
-  gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-  gap: "16px",
-  padding: "20px",
-});
+import { Card } from "baseui/card";
+import { StyledBody } from "baseui/card"; // Ensure this import
 
 export default function WeatherCard({ city, temperature, humidity, windSpeed }) {
   return (
@@ -18,6 +11,8 @@ export default function WeatherCard({ city, temperature, humidity, windSpeed }) 
             borderRadius: "10px",
             boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
             textAlign: "center",
+            padding: "20px",
+            margin: "10px",
           },
         },
       }}
