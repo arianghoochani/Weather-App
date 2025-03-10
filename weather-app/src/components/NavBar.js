@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import { AppNavBar, setItemActive } from "baseui/app-nav-bar";
-import { useState } from "react";
 
 export default function NavBar() {
   const [mainItems, setMainItems] = useState([
@@ -19,7 +18,10 @@ export default function NavBar() {
     <AppNavBar
       title="Weather Information Service"
       mainItems={mainItems}
-      onMainItemSelect={handleMainItemSelect} 
+      onMainItemSelect={handleMainItemSelect}
+      overrides={{
+        Root: { style: { borderBottom: "1px solid #E2E2E2" } }, // Add bottom border
+      }}
     />
   );
 }
