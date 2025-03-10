@@ -4,7 +4,19 @@ import { Button } from "baseui/button";
 export default function App() {
   return (
     <div style={{ padding: "20px" }}>
-      <Button onClick={() => alert("Hello Base Web!")}>Click Me</Button>
+      <Button
+        overrides={{
+          BaseButton: {
+            style: {
+              backgroundColor: "#007AFF", // Default Base Web button color
+              color: "white",
+            },
+          },
+        }}
+        onClick={() => alert("Hello Base Web!")}
+      >
+        Click Me
+      </Button>
     </div>
   );
 }

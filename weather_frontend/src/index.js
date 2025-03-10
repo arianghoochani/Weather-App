@@ -12,11 +12,12 @@ import { BaseProvider, LightTheme } from "baseui";
   const engine = new Client();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <StyletronProvider value={engine}>
-    <BaseProvider theme={LightTheme}>
-      <App />
-    </BaseProvider>
-  </StyletronProvider>
+  <BaseProvider theme={LightTheme}>
+    <App />
+  </BaseProvider>
+</StyletronProvider>
 );
+
 reportWebVitals();
 
 // import React from 'react';
