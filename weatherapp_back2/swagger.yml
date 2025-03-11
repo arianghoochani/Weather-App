@@ -21,6 +21,7 @@ components:
       properties:
         city:
           type: "string"
+          pattern: "^[A-Za-z]+(?:[\\s-][A-Za-z]+)*$"
         temperature:
           type: "number"
           format: "float"
