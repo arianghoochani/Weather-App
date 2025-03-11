@@ -9,9 +9,11 @@ import { styled } from "baseui";
 // Styled container for weather cards
 const WeatherContainer = styled("div", {
   display: "grid",
-  gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+  // gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+  gridTemplateColumns: "repeat(3, 1fr)",
   gap: "16px",
   padding: "20px",
+  justifyContent: "center", 
 });
 
 export default function App() {
