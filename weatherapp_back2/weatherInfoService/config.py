@@ -44,17 +44,17 @@ ma = Marshmallow(app)
 
 
 
-def create_database():
-    connection = pymysql.connect(host=db_host, user=db_user, password=db_password)
-    with connection.cursor() as cursor:
-        cursor.execute(f"CREATE DATABASE IF NOT EXISTS {db_name};")
-    connection.close()
+# def create_database():
+#     connection = pymysql.connect(host=db_host, user=db_user, password=db_password)
+#     with connection.cursor() as cursor:
+#         cursor.execute(f"CREATE DATABASE IF NOT EXISTS {db_name};")
+#     connection.close()
 
-# Function to create tables if they don't exist
-def create_tables():
-    with app.app_context():
-        db.create_all()  # Automatically creates all tables
+# # Function to create tables if they don't exist
+# def create_tables():
+#     with app.app_context():
+#         db.create_all()  # Automatically creates all tables
 
-# Ensure database and tables are created
-create_database()
-create_tables()
+# # Ensure database and tables are created
+# create_database()
+# create_tables()
