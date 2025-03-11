@@ -38,6 +38,14 @@ components:
       required: True
       schema:
         type: "string"
+        pattern: "^[A-Za-z]+(?:[\\s-][A-Za-z]+)*$"
+    # city:
+    #   name: "city"
+    #   description: "name of the city to get weather information"
+    #   in: path
+    #   required: True
+    #   schema:
+    #     type: "string"
 
 
 
