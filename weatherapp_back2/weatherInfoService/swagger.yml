@@ -44,7 +44,7 @@ components:
 paths:
   /weather:
     get:
-      operationId: "controller.weather.get_all"
+      operationId: "controller.weather.getAllWeatherInfo"
       tags:
         - Weather
       summary: "retrieve all weathers information"
