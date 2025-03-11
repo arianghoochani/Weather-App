@@ -44,7 +44,7 @@ components:
 paths:
   /weather:
     get:
-      operationId: "controller/weather.get_all"
+      operationId: "./controller/weather.get_all"
       tags:
         - Weather
       summary: "retrieve all weathers information"
@@ -52,7 +52,7 @@ paths:
         "200":
           description: "Successfully read weather list"
     post:
-      operationId: "controller/weather.create"
+      operationId: "./controller/weather.create"
       tags:
         - Weather
       summary: "Create a new weather record"
@@ -69,7 +69,7 @@ paths:
           description: "Successfully created weather information"
   /weather/{city}:
     get:
-      operationId: "controller/weather.get_one"
+      operationId: "./controller/weather.get_one"
       tags:
         - Weather
       summary: "Read one weather information"
@@ -79,7 +79,7 @@ paths:
         "200":
           description: "Successfully read weather information" 
     put:
-      operationId: "controller/weather.update"
+      operationId: "./controller/weather.update"
       tags:
         - Weather
       summary: "Update a weather info"
@@ -97,7 +97,7 @@ paths:
     delete:
       tags:
         - Weather
-      operationId: "controller/weather.delete"
+      operationId: "./controller/weather.delete"
       summary: "Delete a weather information"
       parameters:
         - $ref: "#/components/parameters/city"
