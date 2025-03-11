@@ -12,7 +12,7 @@ const WeatherBox = styled("div", {
   fontFamily: "Arial, sans-serif",
 });
 
-export default function WeatherCard({ city, temperature, humidity, windSpeed }) {
+export default function WeatherCard({ city, temperature, humidity, windspeed }) {
   return (
     <WeatherBox>
       <h3>{city}</h3>
