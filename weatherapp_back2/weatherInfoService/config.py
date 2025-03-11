@@ -20,7 +20,7 @@ import pathlib
 import connexion
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
-
+import pymysql
 # Base directory
 basedir = pathlib.Path(__file__).parent.resolve()
 
@@ -41,3 +41,20 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 # Initialize database and Marshmallow
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
+
+
+
+def create_database():
+    connection = pymysql.connect(host=db_host, user=db_user, password=db_password)
+    with connection.cursor() as cursor:
+        cursor.execute(f"CREATE DATABASE IF NOT EXISTS {db_name};")
+    connection.close()
+
+# Function to create tables if they don't exist
+def create_tables():
+    with app.app_context():
+        db.create_all()  # Automatically creates all tables
+
+# Ensure database and tables are created
+create_database()
+create_tables()

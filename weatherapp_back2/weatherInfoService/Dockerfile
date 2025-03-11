@@ -7,6 +7,9 @@ WORKDIR /app
 # Copy the project files into the container
 COPY . /app
 
+ENV FLASK_APP=app.py
+ENV FLASK_ENV=development
+
 # Install dependencies from requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
