@@ -4,7 +4,7 @@ from flask import abort, make_response,request
 
 from config import db
 from models import Weather, weather_schema, weathers_schema
-from .classes import *
+from .classes import CreateWeatherInfoResponse, GetAllWeatherInfoResponse
 
 
 
