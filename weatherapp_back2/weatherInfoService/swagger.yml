@@ -21,7 +21,6 @@ components:
       properties:
         city:
           type: "string"
-          # pattern: "^[A-Za-z]+(?:[\\s-][A-Za-z]+)*$"
         temperature:
           type: "number"
           format: "float"
@@ -39,7 +38,6 @@ components:
       required: True
       schema:
         type: "string"
-        # pattern: "^[A-Za-z]+(?:[\\s-][A-Za-z]+)*$"
 
 
 
@@ -54,7 +52,7 @@ paths:
         "200":
           description: "Successfully read weather list"
     post:
-      operationId: "controller.weather.create"
+      operationId: "controller.weather.createWeatherInfo"
       tags:
         - Weather
       summary: "Create a new weather record"

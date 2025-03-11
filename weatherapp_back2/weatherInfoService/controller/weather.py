@@ -18,22 +18,36 @@ def getAllWeatherInfo():
         status = "0"
     response = GetAllWeatherInfoResponse(status=status, weathers = weathers)
     return response.to_dict(),200
-    # return list(WEATHER_INFO.values())
 
-def create():
-    weather_info = request.get_json()  # Get JSON body explicitly
-    if not weather_info:
-        abort(400, "Invalid JSON or missing data")
-    city = weather_info.get("city")
-    existing_weather = Weather.query.filter(Weather.city == city).one_or_none()
-
-    if existing_weather is None:
-        new_weather = weather_schema.load(weather_info, session=db.session)
-        db.session.add(new_weather)
-        db.session.commit()
-        return weather_schema.dump(new_weather), 201
+def createWeatherInfo():
+    status = "1"
+    code = 200
+    new_weather = []
+    weather_info = request.get_json()  
+    if weather_info:
+        try:
+            city = weather_info.get("city")
+            existing_weather = Weather.query.filter(Weather.city == city).one_or_none()
+            if existing_weather is None:
+                new_weather = weather_schema.load(weather_info, session=db.session)
+                db.session.add(new_weather)
+                db.session.commit()
+                new_weather = weathers_schema.load(weather_info, session=db.session)
+            else:
+                staus = "0"
+                code = 406
+                new_weather = []
+        except:
+            status = "0"
+            code = 400
+            new_weather = []
     else:
-        abort(406, f"city {city} already exists")
+        status = "0"
+        code = 400
+        new_weather = []
+    response = CreateWeatherInfoResponse(status=status, new_weather=new_weather)
+    return response.to_dict(), code
+
 
     # city = weather.get("city")
     # temperature = weather.get("temperature")
