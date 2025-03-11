@@ -4,33 +4,19 @@ from flask import abort, make_response,request
 
 from config import db
 from models import Weather, weather_schema, weathers_schema
+from .classes import *
 
 
-# WEATHER_INFO = {
-#     "tehran": {
-#         "city": "tehran",
-#         "temperature": 22.2,
-#         "humidity": 2.0,
-#         "windspeed": 31.2
-#     },
-#     "london": {
-#         "city": "london",
-#         "temperature": 12.1,
-#         "humidity": 29.0,
-#         "windspeed": 3.2
-#     },
-#     "vienna": {
-#         "city": "vienna",
-#         "temperature": 13.5,
-#         "humidity": 48.9,
-#         "windspeed": 88.4
-#     },
-# }
 
-def get_all():
-    weathers = Weather.query.all()
-    print("Fetched weathers:", weathers)
-    return weathers_schema.dump(weathers)
+def getAllWeatherInfo():
+    status = "1"
+    try:
+        weathers = Weather.query.all()
+    except:
+        status = "0"
+        weathers = []
+    response = GetAllWeatherInfoResponse(status=status, weathers = weathers)
+    return response.to_dict()
     # return list(WEATHER_INFO.values())
 
 def create():
