@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect,useState} from "react";
 import axios from "axios";
 
 import Navbar from "./components/Navbar"; // Import Navbar
@@ -15,27 +15,37 @@ const WeatherContainer = styled("div", {
 });
 
 export default function App() {
+  const [citiesWeather, setCitiesWeather] = useState([]); // Store fetched data
+  const [loading, setLoading] = useState(true); // Loading state
+  const [error, setError] = useState(null); // Error state
+
   useEffect(() => {
     // API URL
     const API_URL = "http://116.203.184.212:5000/api/weather";
 
-    // Send GET request
+    // Fetch weather data from API
     axios.get(API_URL)
       .then((response) => {
-        console.log("✅ API Response:", response.data); // Log response to console
+        console.log("✅ API Response:", response.data); // Log API response
+
+        // Check if status is 1 and data exists
+        if (response.data.status === "1" && response.data.weathers.length > 0) {
+          setCitiesWeather(response.data.weathers); // Use API data
+        } else {
+          setCitiesWeather([
+          ]); // Fallback hardcoded data
+        }
+
+        setLoading(false);
       })
       .catch((error) => {
-        console.error("❌ API Error:", error); // Log any errors
+        console.error("❌ API Error:", error);
+        setError("Failed to fetch weather data");
+        setLoading(false);
       });
   }, []);
-  // Sample weather data before API integration
-  const citiesWeather = [
-    { city: "New York", temperature: 22, humidity: 65, windSpeed: 12 },
-    { city: "London", temperature: 18, humidity: 72, windSpeed: 8 },
-    { city: "Tokyo", temperature: 25, humidity: 60, windSpeed: 10 },
-    { city: "Sydney", temperature: 28, humidity: 55, windSpeed: 15 },
-  ];
-
+  if (loading) return <p style={{ textAlign: "center" }}>Loading weather data...</p>;
+  if (error) return <p style={{ textAlign: "center", color: "red" }}>{error}</p>;
   return (
     <div>
       <Navbar />
@@ -45,7 +55,7 @@ export default function App() {
 
       {/* Weather Cards Section */}
       <WeatherContainer>
-        {citiesWeather.map((data, index) => (
+      {citiesWeather.map((data, index) => (
           <WeatherCard key={index} {...data} />
         ))}
       </WeatherContainer>
