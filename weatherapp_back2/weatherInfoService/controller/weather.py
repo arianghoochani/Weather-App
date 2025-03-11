@@ -10,12 +10,12 @@ from .classes import *
 
 def getAllWeatherInfo():
     status = "1"
+    weathers = []
     try:
         all_weathers = Weather.query.all()
         weathers = weathers_schema.dump(all_weathers)
     except:
         status = "0"
-        weathers = []
     response = GetAllWeatherInfoResponse(status=status, weathers = weathers)
     return response.to_dict(),200
     # return list(WEATHER_INFO.values())
