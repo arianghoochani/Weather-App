@@ -1,4 +1,6 @@
 import React from "react";
+import axios from "axios";
+
 import Navbar from "./components/Navbar"; // Import Navbar
 import WeatherCard from "./components/WeatherCard"; // Import WeatherCard
 import { Button } from "baseui/button";
@@ -13,6 +15,19 @@ const WeatherContainer = styled("div", {
 });
 
 export default function App() {
+  useEffect(() => {
+    // API URL
+    const API_URL = "http://116.203.184.212:5000/api/weather";
+
+    // Send GET request
+    axios.get(API_URL)
+      .then((response) => {
+        console.log("✅ API Response:", response.data); // Log response to console
+      })
+      .catch((error) => {
+        console.error("❌ API Error:", error); // Log any errors
+      });
+  }, []);
   // Sample weather data before API integration
   const citiesWeather = [
     { city: "New York", temperature: 22, humidity: 65, windSpeed: 12 },
