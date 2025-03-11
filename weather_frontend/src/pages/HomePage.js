@@ -47,7 +47,6 @@ export default function HomePage() {
       <div style={{ padding: "20px", textAlign: "center" }}>
         <Button onClick={() => alert("Hello Base Web!")}>Click Me</Button>
       </div>
-      console.log("✅ HomePage Loaded");
       <WeatherContainer>
         {citiesWeather.map((data, index) => (
           <WeatherCard key={index} {...data} />
