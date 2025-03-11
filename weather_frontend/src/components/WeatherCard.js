@@ -18,7 +18,7 @@ export default function WeatherCard({ city, temperature, humidity, windSpeed }) 
       <h3>{city}</h3>
       <p>🌡️ Temperature: {temperature}°C</p>
       <p>💧 Humidity: {humidity}%</p>
-      <p>💨 Wind Speed: {windSpeed} km/h</p>
+      <p>💨 Wind Speed: {windspeed} km/h</p>
     </WeatherBox>
   );
 }
