@@ -1,10 +1,11 @@
 from flask import Flask
 from flask_migrate import Migrate
+from flask_cors import CORS 
 import config
 from models import Weather
 app = config.connex_app
 app.add_api(config.basedir / "swagger.yml")
-
+CORS(app.app)
 migrate = Migrate(app.app, config.db)
 @app.route("/")
 def home():
