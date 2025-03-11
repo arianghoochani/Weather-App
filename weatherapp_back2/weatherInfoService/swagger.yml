@@ -21,7 +21,7 @@ components:
       properties:
         city:
           type: "string"
-          pattern: "^[A-Za-z]+(?:[\\s-][A-Za-z]+)*$"
+          # pattern: "^[A-Za-z]+(?:[\\s-][A-Za-z]+)*$"
         temperature:
           type: "number"
           format: "float"
@@ -39,7 +39,7 @@ components:
       required: True
       schema:
         type: "string"
-        pattern: "^[A-Za-z]+(?:[\\s-][A-Za-z]+)*$"
+        # pattern: "^[A-Za-z]+(?:[\\s-][A-Za-z]+)*$"
 
 
 
