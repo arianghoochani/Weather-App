@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 import WeatherCard from "./components/WeatherCard"; 
 import { Button } from "baseui/button";
 import { styled } from "baseui";
-import HomePage from "./pages/HomePage"; 
+import HomePage from "./pages/HomePage";  
 import AddWeather from "./pages/AddWeather";
 
 
