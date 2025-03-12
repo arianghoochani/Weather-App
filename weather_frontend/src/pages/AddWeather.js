@@ -46,7 +46,7 @@ export default function AddWeather() {
   const [city, setCity] = useState("");
   const [temperature, setTemperature] = useState("");
   const [humidity, setHumidity] = useState("");
-  const [windSpeed, setWindSpeed] = useState("");
+  const [windspeed, setwindspeed] = useState("");
 
   const [message, setMessage] = useState(null);
   const [success, setSuccess] = useState(false);
@@ -66,7 +66,7 @@ export default function AddWeather() {
       alert("Humidity must be a number between 0 and 99.");
       return false;
     }
-    if (isNaN(windSpeed) || windSpeed < 0 || windSpeed === "") {
+    if (isNaN(windspeed) || windspeed < 0 || windspeed === "") {
       alert("Wind speed must be 0 or a positive number.");
       return false;
     }
@@ -82,7 +82,7 @@ export default function AddWeather() {
       city,
       temperature: Number(temperature),
       humidity: Number(humidity),
-      windspeed: Number(windSpeed),
+      windspeed: Number(windspeed),
     };
 
     try {
@@ -133,8 +133,8 @@ export default function AddWeather() {
         <Input
           type="number"
           placeholder="Wind Speed (km/h)"
-          value={windSpeed}
-          onChange={(e) => setWindSpeed(e.target.value)}
+          value={windspeed}
+          onChange={(e) => setwindspeed(e.target.value)}
         />
         <Button onClick={handleSubmit}>Submit</Button>
       </FormContainer>
@@ -177,7 +177,7 @@ export default function AddWeather() {
 //   const [city, setCity] = useState("");
 //   const [temperature, setTemperature] = useState("");
 //   const [humidity, setHumidity] = useState("");
-//   const [windSpeed, setWindSpeed] = useState("");
+//   const [windspeed, setwindspeed] = useState("");
 
 //   // Validation function
 //   const validateForm = () => {
@@ -193,7 +193,7 @@ export default function AddWeather() {
 //       alert("Humidity must be a number between 0 and 99.");
 //       return false;
 //     }
-//     if (isNaN(windSpeed) || windSpeed < 0 || windSpeed === "") {
+//     if (isNaN(windspeed) || windspeed < 0 || windspeed === "") {
 //       alert("Wind speed must be 0 or a positive number.");
 //       return false;
 //     }
@@ -235,8 +235,8 @@ export default function AddWeather() {
 //         <Input
 //           type="number"
 //           placeholder="Wind Speed (km/h)"
-//           value={windSpeed}
-//           onChange={(e) => setWindSpeed(e.target.value)}
+//           value={windspeed}
+//           onChange={(e) => setwindspeed(e.target.value)}
 //         />
 //         <Button onClick={handleSubmit}>Submit</Button>
 //       </FormContainer>
