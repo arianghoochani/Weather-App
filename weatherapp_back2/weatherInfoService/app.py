@@ -8,7 +8,7 @@ app = config.connex_app
 app.add_api(config.basedir / "swagger.yml")
 # CORS(app.app)
 # CORS(app.app, resources={r"/api/*": {"origins": ["*","http://116.203.184.212:3000/"]}}, supports_credentials=True)
-CORS(app.app, resources={r"/api/*": {"origins": "http://116.203.184.212:3000/"}}, supports_credentials=True)
+# CORS(app.app, resources={r"/api/*": {"origins": "http://116.203.184.212:3000/"}}, supports_credentials=True)
 
 migrate = Migrate(app.app, config.db)
 @app.route("/")
