@@ -1,6 +1,6 @@
 # people.py
 
-from flask import abort, make_response,request
+from flask import abort, make_response,request, jsonify
 
 from config import db
 from models import Weather, weather_schema, weathers_schema
@@ -26,55 +26,29 @@ def createWeatherInfo():
     weather_info = request.get_json()  
     if weather_info:
         try:
-            print("it is in try")
             city = weather_info.get("city")
             existing_weather = Weather.query.filter(Weather.city == city).one_or_none()
             if existing_weather is None:
-                print("do not exist")
                 new_weather = weather_schema.load(weather_info, session=db.session)
                 db.session.add(new_weather)
                 db.session.commit()
                 weather = Weather.query.filter(Weather.city == city).one_or_none()
                 new_weather = weather_schema.dump(weather)
             else:
-                print("exist")
                 staus = "0"
                 code = 406
                 new_weather = []
         except:
-            print("error")
             status = "0"
             code = 400
             new_weather = []
     else:
-        print("wrong req")
         status = "0"
         code = 400
         new_weather = []
     response = CreateWeatherInfoResponse(status=status, new_weather=new_weather)
     return response.to_dict(), code
 
-
-    # city = weather.get("city")
-    # temperature = weather.get("temperature")
-    # humidity = weather.get("humidity")
-    # windspeed = weather.get("windspeed")
-    
-
-    # if city not in WEATHER_INFO:
-    #     WEATHER_INFO[city] = {
-    #         "city": city,
-    #         "temperature": temperature,
-    #         "humidity": humidity,
-    #         "windspeed": windspeed
-
-    #     }
-    #     return WEATHER_INFO, 201
-    # else:
-    #     abort(
-    #         406,
-    #         f"The weather information of {city} already exists.",
-    #     )
 
 
 def get_one(city):
@@ -134,3 +108,13 @@ def delete(city):
     #         404,
     #         f"weather info of {city} is not found"
     #     )
+
+
+
+def handle_options():
+    response = jsonify({"message": "Preflight OK"})
+    response.headers.add("Access-Control-Allow-Origin", "http://116.203.184.212:3000")
+    response.headers.add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+    response.headers.add("Access-Control-Allow-Headers", "Content-Type, Authorization")
+    response.headers.add("Access-Control-Allow-Credentials", "true")
+    return response, 204
