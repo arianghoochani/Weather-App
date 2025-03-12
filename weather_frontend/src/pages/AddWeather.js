@@ -86,9 +86,11 @@ export default function AddWeather() {
     };
 
     try {
-      const response = await axios.post("http://116.203.184.212:5000/api/weather", requestBody);
-      console.log("✅ API Response:", response.data);
-
+      const response = await axios.post("http://116.203.184.212:5000/api/weather", requestBody, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       if (response.data.status === "1") {
         setSuccess(true);
         setMessage("✅ Weather info added successfully!");
