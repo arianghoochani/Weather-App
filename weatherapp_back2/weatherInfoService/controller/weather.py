@@ -26,22 +26,27 @@ def createWeatherInfo():
     weather_info = request.get_json()  
     if weather_info:
         try:
+            print("it is in try")
             city = weather_info.get("city")
             existing_weather = Weather.query.filter(Weather.city == city).one_or_none()
             if existing_weather is None:
+                print("do not exist")
                 new_weather = weather_schema.load(weather_info, session=db.session)
                 db.session.add(new_weather)
                 db.session.commit()
                 new_weather = weathers_schema.load(weather_info, session=db.session)
             else:
+                print("exist")
                 staus = "0"
                 code = 406
                 new_weather = []
         except:
+            print("error")
             status = "0"
             code = 400
             new_weather = []
     else:
+        print("wrong req")
         status = "0"
         code = 400
         new_weather = []
