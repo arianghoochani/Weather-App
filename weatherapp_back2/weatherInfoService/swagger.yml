@@ -44,11 +44,11 @@ components:
 paths:
   /weather:
     options:
-        summary: "Handle CORS Preflight"
-        description: "Handles CORS preflight requests"
-        responses:
-          "204":
-            description: "Preflight OK"
+      operationId: "controller.weather.handle_options"  
+      responses:
+        "204":
+          description: "Preflight OK"
+       
     get:
       operationId: "controller.weather.getAllWeatherInfo"
       tags:
