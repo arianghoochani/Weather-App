@@ -35,7 +35,7 @@ def createWeatherInfo():
                 db.session.add(new_weather)
                 db.session.commit()
                 weather = Weather(city=weather_info["city"], temperature=weather_info["temperature"],humidity=weather_info["humidity"],windspeed = weather_info["windspeed"])
-                new_weather = weather_schema.load(weather, session=db.session)
+                new_weather = weather_schema.load(weather)
             else:
                 print("exist")
                 staus = "0"
