@@ -4,7 +4,7 @@ from flask import abort, make_response,request, jsonify
 
 from config import db
 from models import Weather, weather_schema, weathers_schema
-from .classes import CreateWeatherInfoResponse, GetAllWeatherInfoResponse
+from .classes import CreateWeatherInfoResponse, GetAllWeatherInfoResponse, GetWeatherInfoResponse
 
 
 
@@ -51,18 +51,30 @@ def createWeatherInfo():
 
 
 
-def get_one(city):
-    weather = Weather.query.filter(Weather.city == city).one_or_none()
-    if weather is not None:
-        return weather_schema.dump(weather)
-    else:
-        abort(404, f"weather info of {city} is not found")
-    # if city in WEATHER_INFO:
-    #     return WEATHER_INFO[city]
-    # else:
-    #     abort(
-    #         404, f"weather info of {city} is not found"
-    #     )
+def getWeatherInfo(city):
+    status = 1
+    foundWeather = ""
+    code = 200
+    try:
+        weather = Weather.query.filter(Weather.city == city).one_or_none()
+
+        if weather is not None:
+            foundWeather =  weather_schema.dump(weather)
+        else:
+            status = 0
+            foundWeather = ""
+            code = 404
+
+    except:
+        status = 0
+        foundWeather = ""
+        code = 404
+    response = GetWeatherInfoResponse(status= status, weather= foundWeather)
+    return response.to_dict(), code
+
+    
+
+
 
 def update(city):
     weather = request.get_json()

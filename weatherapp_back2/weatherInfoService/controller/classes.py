@@ -11,3 +11,10 @@ class CreateWeatherInfoResponse:
         self.new_weather = new_weather
     def to_dict(self):
         return {"status": self.status, "new_weather": self.new_weather}
+
+class GetWeatherInfoResponse:
+    def __init__(self, status, weather ):
+        self.status = status
+        self.weather = weather
+    def to_dict(self):
+        return {"status": self.status, "weather": self.weather}
