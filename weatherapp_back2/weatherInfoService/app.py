@@ -15,13 +15,13 @@ migrate = Migrate(app.app, config.db)
 def home():
     return {"content":"hello world!"}
 
-# @app.app.after_request
-# def add_cors_headers(response):
-#     response.headers["Access-Control-Allow-Origin"] = "*"
-#     response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
-#     response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
-#     response.headers["Access-Control-Allow-Credentials"] = "true"
-#     return response
+@app.app.after_request
+def add_cors_headers(response):
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
+    response.headers["Access-Control-Allow-Credentials"] = "true"
+    return response
 
 # @app.app.route('/api/weather', methods=['POST', 'GET'])
 # def preflight(response):
