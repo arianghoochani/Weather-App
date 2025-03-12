@@ -6,7 +6,7 @@ from models import Weather
 app = config.connex_app
 app.add_api(config.basedir / "swagger.yml")
 # CORS(app.app)
-CORS(app.app, resources={r"/api/*": {"origins": "*"}}, supports_credentials=True)
+CORS(app.app, resources={r"/api/*": {"origins": ["*","http://116.203.184.212:3000/"]}}, supports_credentials=True)
 
 migrate = Migrate(app.app, config.db)
 @app.route("/")
@@ -21,8 +21,7 @@ def add_cors_headers(response):
     response.headers["Access-Control-Allow-Credentials"] = "true"
     return response
 
-# ✅ Handle preflight `OPTIONS` requests
-@app.app.route('/api/weather', methods=['OPTIONS'])
+@app.app.route('/api/weather', methods=['POST', 'GET'])
 def preflight():
     response = jsonify({"message": "Preflight OK"})
     response.headers["Access-Control-Allow-Origin"] = "*"
