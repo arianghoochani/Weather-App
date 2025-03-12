@@ -13,7 +13,7 @@ migrate = Migrate(app.app, config.db)
 def home():
     return {"content":"hello world!"}
 
-@app.after_request
+@app.app.after_request
 def add_cors_headers(response):
     response.headers["Access-Control-Allow-Origin"] = "*"
     response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
@@ -22,7 +22,7 @@ def add_cors_headers(response):
     return response
 
 # ✅ Handle preflight `OPTIONS` requests
-@app.route('/api/weather', methods=['OPTIONS'])
+@app.app.route('/api/weather', methods=['OPTIONS'])
 def preflight():
     response = jsonify({"message": "Preflight OK"})
     response.headers["Access-Control-Allow-Origin"] = "*"
