@@ -52,7 +52,7 @@ export default function UpdateWeather({ city, temperature, humidity, windspeed, 
     };
 
     try {
-      const response = await axios.post(`http://116.203.184.212:5000/api/weather/${city}`, requestBody, {
+      const response = await axios.put(`http://116.203.184.212:5000/api/weather/${city}`, requestBody, {
         headers: {
           "Content-Type": "application/json",
         },
