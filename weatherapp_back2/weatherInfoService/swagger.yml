@@ -79,11 +79,13 @@ paths:
         - Weather
       summary: "Update a weather info"
       requestBody:
+        description: "weather information to be updated"
+        required: True
         content:
           application/json:
             schema:
               x-body-name: "weather"
-              $ref: "#/components/schemas/Weather"
+              $ref: "#/components/schemas/Weather
   /weather/{city}:
     get:
       operationId: "controller.weather.getWeatherInfo"
