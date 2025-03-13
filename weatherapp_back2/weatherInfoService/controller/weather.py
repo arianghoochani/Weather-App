@@ -4,7 +4,7 @@ from flask import abort, make_response,request, jsonify
 
 from config import db
 from models import Weather, weather_schema, weathers_schema
-from .classes import CreateWeatherInfoResponse, GetAllWeatherInfoResponse, GetWeatherInfoResponse, DeleteWeatherResponse
+from .classes import CreateWeatherInfoResponse, GetAllWeatherInfoResponse, GetWeatherInfoResponse, DeleteWeatherResponse, UpdateWeatherResponse
 
 
 
@@ -76,20 +76,34 @@ def getWeatherInfo(city):
 
 
 
-def update(city):
+def updateWeather():
     weather = request.get_json()
-    existing_weather = Weather.query.filter(Weather.city == city).one_or_none()
+    status = 1
+    updatedWeather = ""
+    code = 201
+    try:
+        existing_weather = Weather.query.filter(Weather.city == weather["city"]).one_or_none()
 
-    if existing_weather:
-        update_weather = weather_schema.load(weather, session=db.session)
-        existing_weather.temperature = update_weather.temperature
-        existing_weather.humidity = update_weather.humidity
-        existing_weather.windspeed = update_weather.windspeed
-        db.session.merge(existing_weather)
-        db.session.commit()
-        return weather_schema.dump(existing_weather), 201
-    else:
-        abort(404, f"city {city} is not found")
+        if existing_weather:
+            update_weather = weather_schema.load(weather, session=db.session)
+            existing_weather.temperature = update_weather.temperature
+            existing_weather.humidity = update_weather.humidity
+            existing_weather.windspeed = update_weather.windspeed
+            db.session.merge(existing_weather)
+            db.session.commit()
+            updatedWeather =  weather_schema.dump(existing_weather)
+        else:
+            status = 0
+            updatedWeather = ""
+            code = 404
+    except:
+        status = 0
+        updatedWeather = ""
+        code = 500
+    response = UpdateWeatherResponse(status=status, updated_weather=updatedWeather)
+    return response.to_dict(), code
+    
+
 
 
 def deleteWeather(city):

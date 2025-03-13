@@ -24,3 +24,11 @@ class DeleteWeatherResponse:
         self.status = status
     def to_dict(self):
         return {"status": self.status}
+
+class UpdateWeatherResponse:
+    def __init__(self, status, updated_weather):
+        self.status = status
+        self.updated_weather = updated_weather
+    def to_dict(self):
+        return {"status": self.status, "new_weather": self.new_weather}
+

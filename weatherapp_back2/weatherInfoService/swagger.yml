@@ -73,6 +73,17 @@ paths:
       responses:
         "201":
           description: "Successfully created weather information"
+    put:
+      operationId: "controller.weather.updateWeather"
+      tags:
+        - Weather
+      summary: "Update a weather info"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-body-name: "weather"
+              $ref: "#/components/schemas/Weather"
   /weather/{city}:
     get:
       operationId: "controller.weather.getWeatherInfo"
@@ -84,19 +95,19 @@ paths:
       responses:
         "200":
           description: "Successfully read weather information" 
-    put:
-      operationId: "controller.weather.update"
-      tags:
-        - Weather
-      summary: "Update a weather info"
-      parameters:
-        - $ref: "#/components/parameters/city"
-      requestBody:
-        content:
-          application/json:
-            schema:
-              x-body-name: "weather"
-              $ref: "#/components/schemas/Weather"
+    # put:
+    #   operationId: "controller.weather.update"
+    #   tags:
+    #     - Weather
+    #   summary: "Update a weather info"
+    #   parameters:
+    #     - $ref: "#/components/parameters/city"
+    #   requestBody:
+    #     content:
+    #       application/json:
+    #         schema:
+    #           x-body-name: "weather"
+    #           $ref: "#/components/schemas/Weather"
       responses:
         "200":
           description: "Successfully updated weather information"
