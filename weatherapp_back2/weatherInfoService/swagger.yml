@@ -103,7 +103,7 @@ paths:
     delete:
       tags:
         - Weather
-      operationId: "controller.weather.delete"
+      operationId: "controller.weather.deleteWeather"
       summary: "Delete a weather information"
       parameters:
         - $ref: "#/components/parameters/city"

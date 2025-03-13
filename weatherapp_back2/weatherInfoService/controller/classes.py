@@ -18,3 +18,9 @@ class GetWeatherInfoResponse:
         self.weather = weather
     def to_dict(self):
         return {"status": self.status, "weather": self.weather}
+
+class DeleteWeatherResponse:
+    def __init__(self, status):
+        self.status = status
+    def to_dict(self):
+        return {"status": self.status}

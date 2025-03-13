@@ -73,7 +73,7 @@ export default function SearchWeather() {  // ✅ Ensure export default is used
     } catch (error) {
       console.error("❌ API Error:", error);
       setWeather(null);
-      setMessage("❌ Failed to fetch weather data.");
+      setMessage("❌ City not found.");
       setError(true);
     } finally {
       setLoading(false);

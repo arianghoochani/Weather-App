@@ -4,7 +4,7 @@ from flask import abort, make_response,request, jsonify
 
 from config import db
 from models import Weather, weather_schema, weathers_schema
-from .classes import CreateWeatherInfoResponse, GetAllWeatherInfoResponse, GetWeatherInfoResponse
+from .classes import CreateWeatherInfoResponse, GetAllWeatherInfoResponse, GetWeatherInfoResponse, DeleteWeatherResponse
 
 
 
@@ -90,37 +90,27 @@ def update(city):
         return weather_schema.dump(existing_weather), 201
     else:
         abort(404, f"city {city} is not found")
-    # if city in WEATHER_INFO:
-    #     WEATHER_INFO[city]["temperature"] = weather_info.get("temperature")
-    #     WEATHER_INFO[city]["humidity"] = weather_info.get("humidity")
-    #     WEATHER_INFO[city]["windspeed"] = weather_info.get("windspeed")
-    #     return WEATHER_INFO[city]
-    # else:
-    #     abort(
-    #         404,
-    #         f"weather info of {city} is not found"
-    #     )
 
-def delete(city):
-    existing_weather = Weather.query.filter(Weather.city == city).one_or_none()
 
-    if existing_weather:
-        db.session.delete(existing_weather)
-        db.session.commit()
-        return make_response(f"{city} successfully deleted", 200)
-    else:
-        abort(404, f"city {city} is not found")
-    # if city in WEATHER_INFO:
-    #     del WEATHER_INFO[city]
-    #     return make_response(
-    #         f"{city} successfully deleted", 200
-    #     )
-    # else:
-    #     abort(
-    #         404,
-    #         f"weather info of {city} is not found"
-    #     )
-
+def deleteWeather(city):
+    status = "1"
+    code = 200
+    try:
+        existing_weather = Weather.query.filter(Weather.city == city).one_or_none()
+        if existing_weather:
+            db.session.delete(existing_weather)
+            db.session.commit()
+            
+        else:
+            status = "0"
+            code = 404
+            
+    except:
+        status = "0"
+        code = 500
+    response = DeleteWeatherResponse(status=status)
+    return response.to_dict(), code
+ 
 
 
 def handle_options():
