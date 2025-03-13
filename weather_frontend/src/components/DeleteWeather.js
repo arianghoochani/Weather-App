@@ -28,9 +28,12 @@ export default function DeleteWeather({ city, onDeleteSuccess }) {  // ✅ Ensur
     setMessage(null);
 
     try {
-      const response = await axios.delete(`http://116.203.184.212:5000/api/weather/${city}`, {
-        headers: { "Accept": "application/json" },
-      });
+        const response = await axios.delete(`http://116.203.184.212:5000/api/weather/${city}`, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            withCredentials: true, // ✅ Required for CORS
+          });
       if (response.data.status === "1") {
         setSuccess(true);
         setMessage(`✅ Weather data for ${city} deleted successfully!`);
