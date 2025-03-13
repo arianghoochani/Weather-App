@@ -30,7 +30,7 @@ const MessageBox = styled("div", (props) => ({
   backgroundColor: props.$error ? "red" : "green",
 }));
 
-export default function SearchWeather() {
+export default function SearchWeather() {  // ✅ Ensure export default is used
   const [city, setCity] = useState("");
   const [weather, setWeather] = useState(null);
   const [message, setMessage] = useState(null);
