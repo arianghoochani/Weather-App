@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import WeatherCard from "../components/WeatherCard";
-import DeleteWeather from "../components/DeleteWeather"; // ✅ Import Delete Component
+import DeleteWeather from "../components/DeleteWeather"; 
+import UpdateWeather from "../components/UpdateWeather"; // ✅ Import Update Component
+
 import { Button } from "baseui/button";
 import { Input } from "baseui/input";
 import { styled } from "baseui";
@@ -87,6 +89,11 @@ export default function SearchWeather() {
     setMessage("✅ Weather info deleted successfully!");
     setError(false);
   };
+  const handleUpdateSuccess = (updatedWeather) => {
+    setWeather(updatedWeather);
+    setMessage("✅ Weather info updated successfully!");
+    setError(false);
+  };
 
   return (
     <div>
@@ -118,6 +125,13 @@ export default function SearchWeather() {
             windspeed={weather.windspeed}
           />
           <DeleteWeather city={weather.city} onDeleteSuccess={handleDeleteSuccess} />
+          <UpdateWeather 
+            city={weather.city} 
+            temperature={weather.temperature} 
+            humidity={weather.humidity} 
+            windspeed={weather.windspeed} 
+            onUpdateSuccess={handleUpdateSuccess} 
+          />
         </div>
       )}
     </div>
