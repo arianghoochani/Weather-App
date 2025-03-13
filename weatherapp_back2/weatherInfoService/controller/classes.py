@@ -30,5 +30,5 @@ class UpdateWeatherResponse:
         self.status = status
         self.updated_weather = updated_weather
     def to_dict(self):
-        return {"status": self.status, "new_weather": self.new_weather}
+        return {"status": self.status, "updated_weather": self.updated_weather}
 
