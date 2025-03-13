@@ -12,7 +12,7 @@ app.add_api(config.basedir / "swagger.yml")
 # CORS(app.app, resources={r"/api/*": {"origins": "http://116.203.184.212:3000/"}}, supports_credentials=True)
 CORS(app.app, resources={r"/api/*": {"origins": "http://116.203.184.212:3000"}}, 
      supports_credentials=True, allow_headers=["Content-Type", "Authorization"], 
-     methods=["GET", "POST", "OPTIONS", "PUT", "DELETE"])
+     methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
 migrate = Migrate(app.app, config.db)
 @app.route("/")
 def home():
