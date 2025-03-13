@@ -1,12 +1,13 @@
 import React, {useEffect,useState} from "react";
-import axios from "axios";
+// import axios from "axios";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar"; 
-import WeatherCard from "./components/WeatherCard"; 
-import { Button } from "baseui/button";
-import { styled } from "baseui";
+// import Navbar from "./components/Navbar"; 
+// import WeatherCard from "./components/WeatherCard"; 
+// import { Button } from "baseui/button";
+// import { styled } from "baseui";
 import HomePage from "./pages/HomePage";  
 import AddWeather from "./pages/AddWeather";
+import SearchWeather from "./pages/SearchWeather"; 
 
 
 export default function App() {
