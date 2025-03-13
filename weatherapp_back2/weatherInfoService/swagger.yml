@@ -111,7 +111,7 @@ paths:
         "204":
           description: "Successfully deleted"
     options:  
-      operationId: "controller.weather.handle_options"
+      operationId: "controller.weather.handle_options2"
       summary: "Handle CORS Preflight for DELETE,PUT,GET"
       responses:
         "204":

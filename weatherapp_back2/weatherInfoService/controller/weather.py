@@ -120,3 +120,11 @@ def handle_options():
     response.headers.add("Access-Control-Allow-Headers", "Content-Type, Authorization")
     response.headers.add("Access-Control-Allow-Credentials", "true")
     return response, 204
+
+def handle_options2():
+    response = jsonify({"message": "Preflight OK"})
+    response.headers.add("Access-Control-Allow-Origin", "http://116.203.184.212:3000")
+    response.headers.add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+    response.headers.add("Access-Control-Allow-Headers", "Content-Type, Authorization")
+    response.headers.add("Access-Control-Allow-Credentials", "true")
+    return response, 204
