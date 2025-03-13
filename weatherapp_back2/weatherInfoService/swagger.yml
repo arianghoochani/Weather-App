@@ -86,6 +86,9 @@ paths:
             schema:
               x-body-name: "weather"
               $ref: "#/components/schemas/Weather
+      responses:
+        "201":
+          description: "Successfully created weather information"
   /weather/{city}:
     get:
       operationId: "controller.weather.getWeatherInfo"
@@ -96,7 +99,8 @@ paths:
         - $ref: "#/components/parameters/city"
       responses:
         "200":
-          description: "Successfully read weather information" 
+          description: "Successfully updated weather information" 
+      
     # put:
     #   operationId: "controller.weather.update"
     #   tags:
