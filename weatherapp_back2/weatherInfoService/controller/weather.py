@@ -76,7 +76,7 @@ def getWeatherInfo(city):
 
 
 
-def updateWeatherInfo():
+def updateWeatherInfo(city):
     weather = request.get_json()
     status = 1
     updatedWeather = ""
