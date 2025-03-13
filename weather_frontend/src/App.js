@@ -15,6 +15,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} /> {/* ✅ Home Page */}
         <Route path="/add-weather" element={<AddWeather />} /> {/* ✅ Add Weather Page */}
+        <Route path="/search-weather" element={<SearchWeather />} /> 
       </Routes>
     </Router>
   );

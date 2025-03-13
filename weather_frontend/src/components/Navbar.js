@@ -25,6 +25,9 @@ export default function Navbar() {
           if (item.label === "Home") {
             navigate("/"); 
           }
+          else if (item.label === "Search Weather Info") {
+          navigate("/search-weather"); 
+          }
           else if (item.label === "Add Weather Info") {
             navigate("/add-weather"); 
           }
