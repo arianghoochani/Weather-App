@@ -108,9 +108,9 @@ paths:
     #         schema:
     #           x-body-name: "weather"
     #           $ref: "#/components/schemas/Weather"
-      responses:
-        "200":
-          description: "Successfully updated weather information"
+      # responses:
+      #   "200":
+      #     description: "Successfully updated weather information"
     delete:
       tags:
         - Weather
