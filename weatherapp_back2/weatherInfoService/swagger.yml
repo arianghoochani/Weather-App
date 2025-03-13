@@ -75,7 +75,7 @@ paths:
           description: "Successfully created weather information"
   /weather/{city}:
     get:
-      operationId: "controller.weather.get_one"
+      operationId: "controller.weather.getWeatherInfo"
       tags:
         - Weather
       summary: "Read one weather information"
