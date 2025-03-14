@@ -1,3 +1,4 @@
 {
-    "weather_service":"http://116.203.184.212:5000/api/weather/"
+    "weather_service":"http://116.203.184.212:5000/api/weather",
+    "weather_service_with_slash":"http://116.203.184.212:5000/api/weather/"
   }

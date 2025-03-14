@@ -53,7 +53,7 @@ export default function UpdateWeather({ city, temperature, humidity, windspeed, 
     };
 
     try {
-      const response = await axios.put(`${endpoints.weather_service}${city}`, requestBody, {
+      const response = await axios.put(`${endpoints.weather_service_with_slash}${city}`, requestBody, {
         headers: {
           "Content-Type": "application/json",
         },

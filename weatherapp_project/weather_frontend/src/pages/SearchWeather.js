@@ -63,7 +63,7 @@ export default function SearchWeather() {
     setError(false);
 
     try {
-      const response = await axios.get(`${endpoints.weather_service}${city.trim()}`);
+      const response = await axios.get(`${endpoints.weather_service_with_slash}${city.trim()}`);
       
       if (response.data.status === 1) {
         setWeather(response.data.weather);
