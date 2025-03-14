@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import WeatherCard from "../components/WeatherCard";
 import { Button } from "baseui/button";
 import { styled } from "baseui";
+import endpoints from '../store/endpoints.json';
 
 // Styled container for weather cards
 const WeatherContainer = styled("div", {

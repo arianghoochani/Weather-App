@@ -4,6 +4,7 @@ import { Button } from "baseui/button";
 import { Input } from "baseui/input";
 import { styled } from "baseui";
 import axios from "axios";
+import endpoints from '../store/endpoints.json';
 
 // Styled form container
 const FormContainer = styled("div", {
@@ -86,7 +87,7 @@ export default function AddWeather() {
     };
 
     try {
-      const response = await axios.post("http://116.203.184.212:5000/api/weather", requestBody, {
+      const response = await axios.post(`${endpoints.weather_service}`, requestBody, {
         headers: {
           "Content-Type": "application/json",
         },

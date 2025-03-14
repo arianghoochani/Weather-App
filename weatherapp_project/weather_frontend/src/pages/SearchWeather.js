@@ -8,6 +8,7 @@ import { Button } from "baseui/button";
 import { Input } from "baseui/input";
 import { styled } from "baseui";
 import axios from "axios";
+import endpoints from '../store/endpoints.json';
 
 // Styled components
 const Container = styled("div", {
