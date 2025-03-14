@@ -54,7 +54,7 @@ Navigate to the project root where the Dockerfile is located and execute the fol
 docker compose build
 docker compose up -d
 ```
-
+and otherwise use docker-compose
 ## The Weather App is now running!
 
 Once the services are up, you can access the frontend by opening the browser and navigating to:
