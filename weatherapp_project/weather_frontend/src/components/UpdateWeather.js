@@ -56,7 +56,7 @@ export default function UpdateWeather({ city, temperature, humidity, windspeed, 
         headers: {
           "Content-Type": "application/json",
         },
-        withCredentials: true, // ✅ Required for CORS
+        // withCredentials: true, // ✅ Required for CORS
       });
 
       if (response.data.status === 1) {
