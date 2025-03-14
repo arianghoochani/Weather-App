@@ -1,9 +1,6 @@
-# people.py
-
-from flask import abort, make_response,request, jsonify
-
-from config import db
-from models import Weather, weather_schema, weathers_schema
+from flask import request, jsonify
+from .config import db
+from data.models import Weather, weather_schema, weathers_schema
 from .classes import CreateWeatherInfoResponse, GetAllWeatherInfoResponse, GetWeatherInfoResponse, DeleteWeatherResponse, UpdateWeatherResponse
 
 
