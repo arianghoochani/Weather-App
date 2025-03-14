@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button } from "baseui/button";
 import { styled } from "baseui";
 import axios from "axios";
+import endpoints from '../store/endpoints.json';
 
 // Styled message box
 const MessageBox = styled("div", (props) => ({
@@ -14,7 +15,7 @@ const MessageBox = styled("div", (props) => ({
   backgroundColor: props.$success ? "green" : "red",
 }));
 
-export default function DeleteWeather({ city, onDeleteSuccess }) {  // ✅ Ensure this is the default export
+export default function DeleteWeather({ city, onDeleteSuccess }) {  
   const [message, setMessage] = useState(null);
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -28,16 +29,15 @@ export default function DeleteWeather({ city, onDeleteSuccess }) {  // ✅ Ensur
     setMessage(null);
 
     try {
-        const response = await axios.delete(`http://116.203.184.212:5000/api/weather/${city}`, {
+        const response = await axios.delete(`${endpoints.weather_service}${city}`, {
             headers: {
               "Content-Type": "application/json",
             },
-            // withCredentials: true, // ✅ Required for CORS
           });
       if (response.data.status === "1") {
         setSuccess(true);
         setMessage(`✅ Weather data for ${city} deleted successfully!`);
-        onDeleteSuccess();  // Remove city from UI
+        onDeleteSuccess();  
       } else {
         setSuccess(false);
         setMessage("❌ Failed to delete the weather data.");
