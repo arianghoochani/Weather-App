@@ -20,7 +20,7 @@ export default function HomePage() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const API_URL = "http://116.203.184.212:5000/api/weather";
+    const API_URL = `${endpoints.weather_service}`;
     axios
       .get(API_URL)
       .then((response) => {

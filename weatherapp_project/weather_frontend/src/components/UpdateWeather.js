@@ -52,11 +52,11 @@ export default function UpdateWeather({ city, temperature, humidity, windspeed, 
     };
 
     try {
-      const response = await axios.put(`http://116.203.184.212:5000/api/weather/${city}`, requestBody, {
+      const response = await axios.put(`${endpoints.weather_service}${city}`, requestBody, {
         headers: {
           "Content-Type": "application/json",
         },
-        // withCredentials: true, // ✅ Required for CORS
+       
       });
 
       if (response.data.status === 1) {
