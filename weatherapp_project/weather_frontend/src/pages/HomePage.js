@@ -44,9 +44,6 @@ export default function HomePage() {
   return (
     <div>
       <Navbar />
-      <div style={{ padding: "20px", textAlign: "center" }}>
-        <Button onClick={() => alert("Hello Base Web!")}>Click Me</Button>
-      </div>
       <WeatherContainer>
         {citiesWeather.map((data, index) => (
           <WeatherCard key={index} {...data} />
