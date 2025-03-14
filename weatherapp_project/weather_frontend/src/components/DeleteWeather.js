@@ -29,7 +29,7 @@ export default function DeleteWeather({ city, onDeleteSuccess }) {
     setMessage(null);
 
     try {
-        const response = await axios.delete(`${endpoints.weather_service}${city}`, {
+        const response = await axios.delete(`${endpoints.weather_service_with_slash}${city}`, {
             headers: {
               "Content-Type": "application/json",
             },
