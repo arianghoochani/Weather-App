@@ -18,8 +18,6 @@ export default function Navbar() {
 
       title="Weather Information"
       mainItems={mainItems}
-      // onMainItemSelect={(item) => setActiveItem(item.label)}
-      // onMainItemSelect={(item) => {
         onMainItemSelect={(item) => {
           setActiveItem(item.label);
           if (item.label === "Home") {
@@ -30,6 +28,12 @@ export default function Navbar() {
           }
           else if (item.label === "Add Weather Info") {
             navigate("/add-weather"); 
+          }
+          else if (item.label === "Update Weather Info") {
+            navigate("/search-weathe"); 
+          }
+          else if (item.label === "Delete Weather Inf") {
+            navigate("/search-weathe"); 
           }
         }}
     />
