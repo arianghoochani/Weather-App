@@ -1,5 +1,5 @@
 from datetime import datetime
-from ..config import db, ma
+from config import db, ma
 
 class Weather(db.Model):
     __tablename__ = "weather"

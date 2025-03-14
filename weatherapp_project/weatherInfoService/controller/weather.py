@@ -1,5 +1,5 @@
 from flask import request, jsonify
-from .config import db
+from config import db
 from data.models import Weather, weather_schema, weathers_schema
 from .classes import CreateWeatherInfoResponse, GetAllWeatherInfoResponse, GetWeatherInfoResponse, DeleteWeatherResponse, UpdateWeatherResponse
 
