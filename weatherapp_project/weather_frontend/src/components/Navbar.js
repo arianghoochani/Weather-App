@@ -30,10 +30,10 @@ export default function Navbar() {
             navigate("/add-weather"); 
           }
           else if (item.label === "Update Weather Info") {
-            navigate("/search-weathe"); 
+            navigate("/search-weather"); 
           }
           else if (item.label === "Delete Weather Inf") {
-            navigate("/search-weathe"); 
+            navigate("/search-weather"); 
           }
         }}
     />
