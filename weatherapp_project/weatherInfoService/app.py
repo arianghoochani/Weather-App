@@ -3,7 +3,7 @@ from flask import jsonify, request
 
 from flask_migrate import Migrate
 from flask_cors import CORS 
-import data.config as config
+import config 
 from data.models import Weather
 
 app = config.connex_app
