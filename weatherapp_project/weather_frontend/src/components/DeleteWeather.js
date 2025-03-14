@@ -32,7 +32,7 @@ export default function DeleteWeather({ city, onDeleteSuccess }) {  // ✅ Ensur
             headers: {
               "Content-Type": "application/json",
             },
-            withCredentials: true, // ✅ Required for CORS
+            // withCredentials: true, // ✅ Required for CORS
           });
       if (response.data.status === "1") {
         setSuccess(true);
