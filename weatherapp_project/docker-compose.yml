@@ -1,0 +1,55 @@
+version: "3.8"
+
+services:
+  flaskapp:
+    build: 
+      context: ./weatherInfoService
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      FLASK_ENV: development
+      FLASK_APP: app.py
+      MYSQL_HOST: mysqldb
+      MYSQL_USER: flaskuser
+      MYSQL_PASSWORD: flaskpassword
+      MYSQL_DB: weather_db
+    depends_on:
+      - mysqldb
+
+  mysqldb:
+    build:
+      context: ./mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: weather_db
+      MYSQL_USER: flaskuser
+      MYSQL_PASSWORD: flaskpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql 
+  
+
+  nginx:
+    # image: nginx:1.23.4 #latest
+    build:
+      context: ./nginx
+    container_name: nginx
+    ports:
+      - 80:80
+      - 8080:8080
+    volumes:
+      # - ./nginx/nginx-setup.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./weather_frontend/build:/var/www/react 
+    # depends_on:
+    #   - experimentaldjango
+    #   - pcposdjango
+    restart: always
+
+volumes:
+  mysql_data:
+
+
