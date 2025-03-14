@@ -72,3 +72,11 @@ Additionally, the OpenAPI documentation for the backend is available at:
 ```sh
 http://<YOUR_SERVER_IP>:5000/api/ui
 ```
+
+### api 
+Method	Endpoint	Description
+GET	/api/weather	Retrieve all weather records
+POST	/api/weather	Create a new weather record
+GET	/api/weather/{city}	Retrieve weather information for a specific city
+PUT	/api/weather/{city}	Update weather information for a specific city
+DELETE	/api/weather/{city}	Delete weather information for a specific city
