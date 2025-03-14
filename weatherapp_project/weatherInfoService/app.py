@@ -3,13 +3,11 @@ from flask import jsonify, request
 
 from flask_migrate import Migrate
 from flask_cors import CORS 
-import config
-from models import Weather
+import data.config as config
+from data.models import Weather
 app = config.connex_app
 app.add_api(config.basedir / "swagger.yml")
-# CORS(app.app)
-# CORS(app.app, resources={r"/api/*": {"origins": ["*","http://116.203.184.212:3000/"]}}, supports_credentials=True)
-# CORS(app.app, resources={r"/api/*": {"origins": "http://116.203.184.212:3000/"}}, supports_credentials=True)
+
 CORS(app.app, resources={r"/api/*": {"origins": "*"}}, 
      supports_credentials=True, allow_headers=["Content-Type", "Authorization"], 
      methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
