@@ -13,9 +13,7 @@ CORS(app.app, resources={r"/api/*": {"origins": "*"}},
      supports_credentials=True, allow_headers=["Content-Type", "Authorization"], 
      methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
 migrate = Migrate(app.app, config.db)
-@app.route("/")
-def home():
-    return {"content":"hello world!"}
+
 
 @app.app.after_request
 def add_cors_headers(response):
@@ -26,5 +24,4 @@ def add_cors_headers(response):
     return response
 
 if __name__ == "__main__":
-    # uvicorn.run("config:connex_app", host="0.0.0.0", port=8000, reload=True)
     app.run(host="0.0.0.0", port=5000)
